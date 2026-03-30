@@ -1,0 +1,27 @@
+<h2>My Heroes</h2>
+
+<!-- Exercise 3: inputFormat directive - text becomes uppercase on blur -->
+<div>
+  <label for="searchBox">Type something and click away:</label>
+  <input id="searchBox" appInputFormat placeholder="Will become UPPERCASE on blur" />
+</div>
+
+<ul class="heroes">
+  <!-- Exercise 1 & 2: *ngFor directive + removeSpaces pipe -->
+  <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+    <span class="badge">{{ hero.id }}</span>
+    {{ hero.name | removeSpaces }}
+  </li>
+</ul>
+
+<!-- Exercise 1: *ngIf to show selected hero detail -->
+<div *ngIf="selectedHero">
+  <h2>{{ selectedHero.name | removeSpaces }} Details</h2>
+  <div><span>id: </span>{{ selectedHero.id }}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name" />
+  </div>
+</div>
